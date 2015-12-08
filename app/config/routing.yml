@@ -1,3 +1,8 @@
+iia_api:
+    resource: "@iiaApiBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
