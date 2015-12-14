@@ -36,9 +36,8 @@ class GroupOfUsers
      */
     private $groupCat;
     /**
-     * @ORM\ManyToOne(targetEntity="User",inversedBy="$userGroup")
-     * @ORM\JoinColumn(name="user_id",referencedColumnName="id")
-     * @var \iia\ApiBundle\Entity\User
+     * @ORM\OneToMany(targetEntity="User",mappedBy="$userGroup")
+     * @var \iia\ApiBundle\Entity\GroupOfUsers
      */
     private $groupUser;
     /**

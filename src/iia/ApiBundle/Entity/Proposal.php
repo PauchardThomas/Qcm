@@ -38,7 +38,8 @@ class Proposal
     /**
      * 
      * @var \iia\ApiBundle\Entity\Proposal
-     * @orm\OneToMany(targetEntity="Question",mappedBy="$questionProp")
+     * @ORM\ManyToOne(targetEntity="Question",inversedBy="$questionProp")
+     * @ORM\JoinColumn(name="question_id",referencedColumnName="id")
      */
     private $propQuestion;
 

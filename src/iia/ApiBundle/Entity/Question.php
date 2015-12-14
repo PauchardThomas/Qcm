@@ -43,16 +43,15 @@ class Question
     private $mediaLink;
 
     /**
-     * @var \iia\ApiBundle\Entity\Question
-     * @ORM\OneToMany(targetEntity="Qcm",mappedBy="question_id")
+     * @var \iia\ApiBundle\Entity\Qcm @ORM\ManyToOne(targetEntity="Qcm",inversedBy="$question_id")
+     * @ORM\JoinColumn(name="qcm_id",referencedColumnName="id")
      */
     private $questionQcm;
     
     /**
      * 
      * @var \iia\ApiBundle\Entity\Proposal
-     * @ORM\ManyToOne(targetEntity="Proposal",inversedBy="$propQuestion")
-     * @ORM\JoinColumn(name="proposal_id",referencedColumnName="id")
+     * @orm\OneToMany(targetEntity="Proposal",mappedBy="$propQuestion")
      */
     private $questionProp;
 

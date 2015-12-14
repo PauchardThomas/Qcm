@@ -39,6 +39,11 @@ class Category
      * @var \Doctrine\Common\Collections\Collection
      */
     private $categoryUser;
+    /**
+     * @var \iia\ApiBundle\Entity\Qcm
+     * @ORM\OneToMany(targetEntity="Qcm",mappedBy="$qcmCat")
+     */
+    private $categoryQcm;
 
 
     /**

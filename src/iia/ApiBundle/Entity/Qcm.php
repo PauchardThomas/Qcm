@@ -18,6 +18,7 @@ class Qcm
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\OneToMany(targetEntity="User_qcm", mappedBy="$qcmId")
      */
     private $id;
 
@@ -43,21 +44,15 @@ class Qcm
     private $dateFin;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="qcm_cat", type="integer")
+     * @ORM\ManyToOne(targetEntity="Category",inversedBy="$categoryQcm")
+     * @var \iia\ApiBundle\Entity\Qcm
      */
     private $qcmCat;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="User",mappedBy="userQcm")
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $qcmUser;
     
     /**
-     * @var \iia\ApiBundle\Entity\Question @ORM\ManyToOne(targetEntity="Question",inversedBy="$questionQcm")
-     * @ORM\JoinColumn(name="question_id",referencedColumnName="id")
+     * @var \iia\ApiBundle\Entity\Qcm
+     * @ORM\OneToMany(targetEntity="Question",mappedBy="$questionQcm")
+     * @ORM\JoinColumn(name="category_id",referencedColumnName="id")
      */
     private $question_id;
 

@@ -19,6 +19,7 @@ class User
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\OneToMany(targetEntity="User_qcm", mappedBy="$userId")
      */
     private $id;
 
@@ -58,8 +59,9 @@ class User
     private $mail;
 
     /**
-     * @ORM\OneToMany(targetEntity="GroupOfUsers",mappedBy="$groupUser")
-     * @var \iia\ApiBundle\Entity\User
+     * @ORM\ManyToOne(targetEntity="GroupOfUsers",inversedBy="$groupUser")
+     * @ORM\JoinColumn(name="group_id",referencedColumnName="id")
+     * @var \iia\ApiBundle\Entity\GroupOfUsers
      */
     private $userGroup;
 
@@ -70,12 +72,7 @@ class User
      */
     private $userCat;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="Qcm",inversedBy="$qcmUser")
-     * @ORM\JoinTable(name="utilisateur_Qcm",joinColumns={@JoinColumn(name="user_id",referencedColumnName="id")},inverseJoinColumns={@JoinColumn(name="qcm_id",referencedColumnName="id")})
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    private $userQcm;
+
 
 
     /**
