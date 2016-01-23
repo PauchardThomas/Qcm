@@ -3,12 +3,15 @@
 namespace iia\ApiBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
 
 /**
  * Question
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="iia\ApiBundle\Entity\QuestionRepository")
+ * @ExclusionPolicy("all")
  */
 class Question
 {
@@ -18,6 +21,7 @@ class Question
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Expose()
      */
     private $id;
 
@@ -25,6 +29,7 @@ class Question
      * @var string
      *
      * @ORM\Column(name="libelle", type="string", length=255)
+     * @Expose()
      */
     private $libelle;
 
@@ -51,7 +56,7 @@ class Question
     /**
      * 
      * @var \iia\ApiBundle\Entity\Proposal
-     * @orm\OneToMany(targetEntity="Proposal",mappedBy="$propQuestion")
+     * @orm\OneToMany(targetEntity="Proposal",mappedBy="propQuestion")
      */
     private $questionProp;
 
@@ -160,5 +165,49 @@ class Question
     {
         return $this->questionQcm;
     }
-}
+    public function __toString()
+    {
+      return strval($this->id);
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->questionProp = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add questionProp
+     *
+     * @param \iia\ApiBundle\Entity\Proposal $questionProp
+     *
+     * @return Question
+     */
+    public function addQuestionProp(\iia\ApiBundle\Entity\Proposal $questionProp)
+    {
+        $this->questionProp[] = $questionProp;
+
+        return $this;
+    }
+
+    /**
+     * Remove questionProp
+     *
+     * @param \iia\ApiBundle\Entity\Proposal $questionProp
+     */
+    public function removeQuestionProp(\iia\ApiBundle\Entity\Proposal $questionProp)
+    {
+        $this->questionProp->removeElement($questionProp);
+    }
+
+    /**
+     * Get questionProp
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getQuestionProp()
+    {
+        return $this->questionProp;
+    }
+}

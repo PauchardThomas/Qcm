@@ -100,7 +100,7 @@ fos_rest:
 fos_user:
     db_driver: orm
     firewall_name: main
-    user_class: Ens\ApiBundle\Entity\User
+    user_class: iia\ApiBundle\Entity\User
     
 jms_serializer:
     metadata:
@@ -109,4 +109,3 @@ jms_serializer:
                 namespace_prefix: "FOS\\UserBundle"
                 path: "%kernel.root_dir%/serializer/FOSUserBundle"
 nelmio_api_doc: ~
-    

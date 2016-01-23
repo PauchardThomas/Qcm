@@ -126,4 +126,3 @@ class Proposal
         return $this->propQuestion;
     }
 }
-

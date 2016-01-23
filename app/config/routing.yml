@@ -1,8 +1,10 @@
-iia_api:
-    resource: "@iiaApiBundle/Controller/"
-    type:     annotation
+iiaApiBundle:
+    resource: "@iiaApiBundle/Resources/config/routing.yml"
     prefix:   /
-
-app:
-    resource: "@AppBundle/Controller/"
-    type:     annotation
+iiaApiBundle_qcm:
+    resource: "@iiaApiBundle/Resources/config/routing/qcm.yml"
+    prefix: /qcm
+rest : 
+  type : rest 
+  resource : "routing_rest.yml"
+  prefix : /api

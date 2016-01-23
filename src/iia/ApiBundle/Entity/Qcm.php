@@ -3,12 +3,17 @@
 namespace iia\ApiBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
+use JMS\Serializer\Annotation\Groups;
+
 
 /**
  * Qcm
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="iia\ApiBundle\Entity\QcmRepository")
+ * @ExclusionPolicy("all")
  */
 class Qcm
 {
@@ -19,6 +24,8 @@ class Qcm
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\OneToMany(targetEntity="User_qcm", mappedBy="$qcmId")
+     * @Expose()
+     * @Groups({"list"})
      */
     private $id;
 
@@ -26,39 +33,47 @@ class Qcm
      * @var string
      *
      * @ORM\Column(name="libelle", type="string", length=255)
+     * @Expose
+     * @Groups({"list"})
      */
     private $libelle;
 
     /**
      * @var \DateTime
-     *
+     * @Expose
      * @ORM\Column(name="date_publi", type="date")
      */
     private $datePubli;
 
     /**
      * @var \DateTime
-     *
+     * @Expose
      * @ORM\Column(name="date_fin", type="date")
      */
     private $dateFin;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Category",inversedBy="$categoryQcm")
-     * @var \iia\ApiBundle\Entity\Qcm
+     *  
+     *  @var \iia\ApiBundle\Entity\Category  @ORM\ManyToOne(targetEntity="Category",inversedBy="$categoryQcm")
+     *  @ORM\JoinColumn(name="category_id",referencedColumnName="id")
+     *  
+     * 
      */
     private $qcmCat;
     
     /**
      * @var \iia\ApiBundle\Entity\Qcm
-     * @ORM\OneToMany(targetEntity="Question",mappedBy="$questionQcm")
-     * @ORM\JoinColumn(name="category_id",referencedColumnName="id")
+     * @ORM\OneToMany(targetEntity="Question",mappedBy="questionQcm")
+     * @Expose
+     *
+     * 
      */
     private $question_id;
 
 
     /**
      * Get id
+     *
      *
      * @return integer
      */
@@ -71,7 +86,7 @@ class Qcm
      * Set libelle
      *
      * @param string $libelle
-     *
+     * 
      * @return Qcm
      */
     public function setLibelle($libelle)
@@ -83,7 +98,7 @@ class Qcm
 
     /**
      * Get libelle
-     *
+     * 
      * @return string
      */
     public function getLibelle()
@@ -93,7 +108,7 @@ class Qcm
 
     /**
      * Set datePubli
-     *
+     * 
      * @param \DateTime $datePubli
      *
      * @return Qcm
@@ -107,7 +122,7 @@ class Qcm
 
     /**
      * Get datePubli
-     *
+     * 
      * @return \DateTime
      */
     public function getDatePubli()
@@ -186,5 +201,49 @@ class Qcm
     {
         return $this->qcmUser;
     }
-}
+    public function __toString()
+    {
+      return strval($this->id);
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->question_id = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add questionId
+     *
+     * @param \iia\ApiBundle\Entity\Question $questionId
+     *
+     * @return Qcm
+     */
+    public function addQuestionId(\iia\ApiBundle\Entity\Question $questionId)
+    {
+        $this->question_id[] = $questionId;
+
+        return $this;
+    }
+
+    /**
+     * Remove questionId
+     *
+     * @param \iia\ApiBundle\Entity\Question $questionId
+     */
+    public function removeQuestionId(\iia\ApiBundle\Entity\Question $questionId)
+    {
+        $this->question_id->removeElement($questionId);
+    }
+
+    /**
+     * Get questionId
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getQuestionId()
+    {
+        return $this->question_id;
+    }
+}

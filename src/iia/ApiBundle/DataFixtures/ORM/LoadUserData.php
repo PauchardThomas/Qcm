@@ -1,5 +1,6 @@
 <?php
-namespace Ens\ApiBundle\DataFixtures\ORM;
+
+namespace iia\ApiBundle\DataFixtures\ORM;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\AbstractFixture;
@@ -10,34 +11,37 @@ use iia\ApiBundle\Entity\User;
 
 class LoadUserData extends AbstractFixture implements FixtureInterface, ContainerAwareInterface
 {
-	/**
-	 * @var ContainerInterface
-	 */
-	private $container;
-	
-	/**
-	 * {@inheritDoc}
-	 */
-	public function setContainer(ContainerInterface $container = null)
-	{
-		$this->container = $container;
-	}
-	
-    public function load(ObjectManager $em)
-    {
-		// Get our userManager, you must implement `ContainerAwareInterface`
-        $userManager = $this->container->get('fos_user.user_manager');
+  /**
+   * @var ContainerInterface
+   */
+  private $container;
 
-        // Create our user and set details
-        $user = $userManager->createUser();
-        $user->setLogin('admin');
-        $user->setPassword('admin');
-        $user->setName('Name');
-        $user->setFirstName('FirstName');
-        $user->setMail('mail@mail.fr');
+  /**
+   * {@inheritDoc}
+   */
+  public function setContainer(ContainerInterface $container = null)
+  {
+    $this->container = $container;
+  }
 
+  public function load(ObjectManager $em)
+  {
+    // Get our userManager, you must implement `ContainerAwareInterface`
+    $userManager = $this->container->get('fos_user.user_manager');
 
-        // Update the user
-        $userManager->updateUser($user, true);
-    }
+    // Create our user and set details
+    $user = $userManager->createUser();
+    $user->setLogin('tata');
+    $user->setPassword("password");
+    $user->setName("name");
+    $user->setFirstName("firstname");
+    $user->setmail('email@domain.com');
+    $id = 1;
+    //$user->setEnabled(true);
+    //$user->setRoles(array('ROLE_ADMIN'));
+    // Update the user
+    //$userManager->updateUser($id);
+    $em->persist($user);
+    $em->flush();
+  }
 }

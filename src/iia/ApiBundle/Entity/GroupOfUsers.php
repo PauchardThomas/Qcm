@@ -73,5 +73,80 @@ class GroupOfUsers
     {
         return $this->libelle;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->groupCat = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->groupUser = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add groupCat
+     *
+     * @param \iia\ApiBundle\Entity\Category $groupCat
+     *
+     * @return GroupOfUsers
+     */
+    public function addGroupCat(\iia\ApiBundle\Entity\Category $groupCat)
+    {
+        $this->groupCat[] = $groupCat;
+
+        return $this;
+    }
+
+    /**
+     * Remove groupCat
+     *
+     * @param \iia\ApiBundle\Entity\Category $groupCat
+     */
+    public function removeGroupCat(\iia\ApiBundle\Entity\Category $groupCat)
+    {
+        $this->groupCat->removeElement($groupCat);
+    }
+
+    /**
+     * Get groupCat
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGroupCat()
+    {
+        return $this->groupCat;
+    }
+
+    /**
+     * Add groupUser
+     *
+     * @param \iia\ApiBundle\Entity\User $groupUser
+     *
+     * @return GroupOfUsers
+     */
+    public function addGroupUser(\iia\ApiBundle\Entity\User $groupUser)
+    {
+        $this->groupUser[] = $groupUser;
+
+        return $this;
+    }
+
+    /**
+     * Remove groupUser
+     *
+     * @param \iia\ApiBundle\Entity\User $groupUser
+     */
+    public function removeGroupUser(\iia\ApiBundle\Entity\User $groupUser)
+    {
+        $this->groupUser->removeElement($groupUser);
+    }
+
+    /**
+     * Get groupUser
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGroupUser()
+    {
+        return $this->groupUser;
+    }
+}

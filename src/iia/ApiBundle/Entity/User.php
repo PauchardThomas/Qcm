@@ -4,14 +4,14 @@ namespace iia\ApiBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\JoinColumn;
-
+use FOS\UserBundle\Entity\User AS BaseUser ;
 /**
  * User
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="iia\ApiBundle\Entity\UserRepository")
  */
-class User
+class User 
 {
     /**
      * @var integer
@@ -21,56 +21,56 @@ class User
      * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\OneToMany(targetEntity="User_qcm", mappedBy="$userId")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="login", type="string", length=255)
      */
-    private $login;
+    protected $login;
 
     /**
      * @var string
      *
      * @ORM\Column(name="password", type="string", length=255)
      */
-    private $password;
+    protected $password;
 
     /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
      */
-    private $name;
+    protected $name;
 
     /**
      * @var string
      *
      * @ORM\Column(name="firstname", type="string", length=255)
      */
-    private $firstname;
+    protected $firstname;
 
     /**
      * @var string
      *
      * @ORM\Column(name="mail", type="string", length=255)
      */
-    private $mail;
+    protected $mail;
 
     /**
      * @ORM\ManyToOne(targetEntity="GroupOfUsers",inversedBy="$groupUser")
      * @ORM\JoinColumn(name="group_id",referencedColumnName="id")
      * @var \iia\ApiBundle\Entity\GroupOfUsers
      */
-    private $userGroup;
+    protected $userGroup;
 
     /**
      * @ORM\ManyToMany(targetEntity="Category",inversedBy="$categoryUser")
      * @ORM\JoinTable(name="Access_user_category",joinColumns={@JoinColumn(name="user_id",referencedColumnName="id")},inverseJoinColumns={@JoinColumn(name="category_id",referencedColumnName="id")})
      * @var \Doctrine\Common\Collections\Collection
      */
-    private $userCat;
+    protected $userCat;
 
 
 
@@ -276,5 +276,39 @@ class User
     {
         return $this->userQcm;
     }
-}
+    public function __toString()
+    {
+      return strval($this->id);
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->userCat = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add userCat
+     *
+     * @param \iia\ApiBundle\Entity\Category $userCat
+     *
+     * @return User
+     */
+    public function addUserCat(\iia\ApiBundle\Entity\Category $userCat)
+    {
+        $this->userCat[] = $userCat;
+
+        return $this;
+    }
+
+    /**
+     * Remove userCat
+     *
+     * @param \iia\ApiBundle\Entity\Category $userCat
+     */
+    public function removeUserCat(\iia\ApiBundle\Entity\Category $userCat)
+    {
+        $this->userCat->removeElement($userCat);
+    }
+}
