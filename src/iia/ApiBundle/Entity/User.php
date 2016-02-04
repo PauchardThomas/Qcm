@@ -11,7 +11,7 @@ use FOS\UserBundle\Entity\User AS BaseUser ;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="iia\ApiBundle\Entity\UserRepository")
  */
-class User 
+class User extends BaseUser
 {
     /**
      * @var integer
@@ -26,37 +26,37 @@ class User
     /**
      * @var string
      *
-     * @ORM\Column(name="login", type="string", length=255)
+     * @ORM\Column(name="loginn", type="string", length=255)
      */
-    protected $login;
+    protected $loginn;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="password", type="string", length=255)
+     * @ORM\Column(name="passwordd", type="string", length=255)
      */
-    protected $password;
+    protected $passwordd;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="namee", type="string", length=255)
      */
-    protected $name;
+    protected $namee;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="firstname", type="string", length=255)
+     * @ORM\Column(name="firstnamee", type="string", length=255)
      */
-    protected $firstname;
+    protected $firstnamee;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="mail", type="string", length=255)
+     * @ORM\Column(name="maill", type="string", length=255)
      */
-    protected $mail;
+    protected $maill;
 
     /**
      * @ORM\ManyToOne(targetEntity="GroupOfUsers",inversedBy="$groupUser")

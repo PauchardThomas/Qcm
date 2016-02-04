@@ -4,13 +4,44 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
-    <!--
+
     <services>
-        <service id="iia_api.example" class="iia\ApiBundle\Example">
-            <argument type="service" id="service_id" />
-            <argument>plain_value</argument>
-            <argument>%parameter_name%</argument>
+	    <service id="iia.apibundle.admin.qcm" class="iia\ApiBundle\Admin\QcmAdmin">
+	      <tag name="sonata.admin" manager_type="orm" group="api" label="Qcms"/>
+	      <argument>null</argument>
+	      <argument>iia\ApiBundle\Entity\Qcm</argument>
+	      <argument>iiaApiBundle:QcmAdmin</argument>
+	    </service>
+	    <service id="iia.apibundle.admin.category" class="iia\ApiBundle\Admin\CategoryAdmin">
+	      <tag name="sonata.admin" manager_type="orm" group="api" label="Categories"/>
+	      <argument>null</argument>
+	      <argument>iia\ApiBundle\Entity\Category</argument>
+	      <argument>iiaApiBundle:CategoryAdmin</argument>
+	    </service>
+	           <service id="iia.apibundle.admin.proposal" class="iia\ApiBundle\Admin\ProposalAdmin">
+          <tag name="sonata.admin" manager_type="orm" group="api" label="Proposals"/>
+          <argument>null</argument>
+          <argument>iia\ApiBundle\Entity\Proposal</argument>
+          <argument>iiaApiBundle:ProposalAdmin</argument>
+        </service>
+        <service id="iia.apibundle.admin.question" class="iia\ApiBundle\Admin\QuestionAdmin">
+          <tag name="sonata.admin" manager_type="orm" group="api" label="Questions"/>
+          <argument>null</argument>
+          <argument>iia\ApiBundle\Entity\Question</argument>
+          <argument>iiaApiBundle:QuestionAdmin</argument>
+        </service>
+        <service id="iia.apibundle.admin.user" class="iia\ApiBundle\Admin\UserAdmin">
+          <tag name="sonata.admin" manager_type="orm" group="api" label="Users"/>
+          <argument>null</argument>
+          <argument>iia\ApiBundle\Entity\User</argument>
+          <argument>iiaApiBundle:UserAdmin</argument>
+        </service>
+                <service id="iia.apibundle.admin.group" class="iia\ApiBundle\Admin\GroupAdmin">
+          <tag name="sonata.admin" manager_type="orm" group="api" label="Groups"/>
+          <argument>null</argument>
+          <argument>iia\ApiBundle\Entity\GroupOfUsers</argument>
+          <argument>iiaApiBundle:GroupAdmin</argument>
         </service>
     </services>
-    -->
+
 </container>

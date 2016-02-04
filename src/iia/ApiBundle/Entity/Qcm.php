@@ -51,7 +51,13 @@ class Qcm
      * @ORM\Column(name="date_fin", type="date")
      */
     private $dateFin;
-
+    /**
+     * 
+     * @var string
+     * @Expose
+     * @ORM\Column(name="nb_points",type="bigint");
+     */
+    private $nbPoints;
     /**
      *  
      *  @var \iia\ApiBundle\Entity\Category  @ORM\ManyToOne(targetEntity="Category",inversedBy="$categoryQcm")
@@ -105,7 +111,25 @@ class Qcm
     {
         return $this->libelle;
     }
-
+    /**
+     * 
+     * @param \string $nbPoints
+     * @return \iia\ApiBundle\Entity\Qcm
+     */
+    public function setNbPoint($nbPoints)
+    {
+      $this->nbPoints = $nbPoints;
+      
+      return $this;
+    }
+    /**
+     * get NbPoints
+     * @return string
+     */
+    public function getNbPoint()
+    {
+      return $this->nbPoints;
+    }
     /**
      * Set datePubli
      * 
@@ -245,5 +269,29 @@ class Qcm
     public function getQuestionId()
     {
         return $this->question_id;
+    }
+
+    /**
+     * Set nbPoints
+     *
+     * @param integer $nbPoints
+     *
+     * @return Qcm
+     */
+    public function setNbPoints($nbPoints)
+    {
+        $this->nbPoints = $nbPoints;
+
+        return $this;
+    }
+
+    /**
+     * Get nbPoints
+     *
+     * @return integer
+     */
+    public function getNbPoints()
+    {
+        return $this->nbPoints;
     }
 }

@@ -23,7 +23,10 @@
         "friendsofsymfony/user-bundle": "^1.3",
         "doctrine/doctrine-fixtures-bundle": "^2.3",
         "nelmio/api-doc-bundle": "^2.11",
-        "sonata-project/admin-bundle": "^2.3"
+        "sonata-project/admin-bundle": "^2.3",
+        "sonata-project/cache-bundle": "^2.2",
+        "sonata-project/doctrine-orm-admin-bundle": "^2.3",
+        "knplabs/knp-menu-bundle": "^2.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3",
