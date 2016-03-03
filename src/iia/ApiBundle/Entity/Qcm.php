@@ -23,7 +23,7 @@ class Qcm
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\OneToMany(targetEntity="User_qcm", mappedBy="$qcmId")
+     * @ORM\OneToMany(targetEntity="User_qcm", mappedBy="qcmId")
      * @Expose()
      * @Groups({"list"})
      */
@@ -60,7 +60,7 @@ class Qcm
     private $nbPoints;
     /**
      *  
-     *  @var \iia\ApiBundle\Entity\Category  @ORM\ManyToOne(targetEntity="Category",inversedBy="$categoryQcm")
+     *  @var \iia\ApiBundle\Entity\Category  @ORM\ManyToOne(targetEntity="Category",inversedBy="categoryQcm")
      *  @ORM\JoinColumn(name="category_id",referencedColumnName="id")
      *  
      * 

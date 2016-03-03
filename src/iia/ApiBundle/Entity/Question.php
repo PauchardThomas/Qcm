@@ -48,7 +48,7 @@ class Question
     private $mediaLink;
 
     /**
-     * @var \iia\ApiBundle\Entity\Qcm @ORM\ManyToOne(targetEntity="Qcm",inversedBy="$question_id")
+     * @var \iia\ApiBundle\Entity\Qcm @ORM\ManyToOne(targetEntity="Qcm",inversedBy="question_id")
      * @ORM\JoinColumn(name="qcm_id",referencedColumnName="id")
      */
     private $questionQcm;

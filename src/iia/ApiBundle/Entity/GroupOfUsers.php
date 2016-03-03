@@ -30,13 +30,13 @@ class GroupOfUsers
     private $libelle;
     
     /**
-     *  @ORM\ManyToMany(targetEntity="Category",inversedBy="$categoryGroup")
+     *  @ORM\ManyToMany(targetEntity="Category",inversedBy="categoryGroup")
      *  @ORM\JoinTable(name="Access_group_category",joinColumns={@JoinColumn(name="group_id",referencedColumnName="id")},inverseJoinColumns={@JoinColumn(name="category_id",referencedColumnName="id")})
      *  @var \Doctrine\Common\Collections\Collection
      */
     private $groupCat;
     /**
-     * @ORM\OneToMany(targetEntity="User",mappedBy="$userGroup")
+     * @ORM\OneToMany(targetEntity="User",mappedBy="userGroup")
      * @var \iia\ApiBundle\Entity\GroupOfUsers
      */
     private $groupUser;
@@ -72,6 +72,10 @@ class GroupOfUsers
     public function getLibelle()
     {
         return $this->libelle;
+    }
+    public function __toString()
+    {
+      return $this->getLibelle();
     }
     /**
      * Constructor
@@ -149,4 +153,6 @@ class GroupOfUsers
     {
         return $this->groupUser;
     }
+
+
 }

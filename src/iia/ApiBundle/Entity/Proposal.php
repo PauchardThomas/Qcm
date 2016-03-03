@@ -38,7 +38,7 @@ class Proposal
     /**
      * 
      * @var \iia\ApiBundle\Entity\Proposal
-     * @ORM\ManyToOne(targetEntity="Question",inversedBy="$questionProp")
+     * @ORM\ManyToOne(targetEntity="Question",inversedBy="questionProp")
      * @ORM\JoinColumn(name="question_id",referencedColumnName="id")
      */
     private $propQuestion;
