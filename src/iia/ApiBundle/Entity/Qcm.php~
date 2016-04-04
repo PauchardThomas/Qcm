@@ -41,14 +41,14 @@ class Qcm
 
     /**
      * @var \DateTime
-     * 
+     * @Expose
      * @ORM\Column(name="date_publi", type="date")
      */
     private $datePubli;
 
     /**
      * @var \DateTime
-     * 
+     * @Expose
      * @ORM\Column(name="date_fin", type="date")
      */
     private $dateFin;
@@ -72,7 +72,6 @@ class Qcm
      * @var \iia\ApiBundle\Entity\Qcm
      * @ORM\OneToMany(targetEntity="Question",mappedBy="questionQcm")
      * @Expose
-     * 
      *
      * 
      */
@@ -81,8 +80,6 @@ class Qcm
     /**
      * @ORM\Column(name="duration",type="time", nullable=true)
      * @var string
-     * @Expose
-     * @Groups({"list"})
      */
     private $duration;
 
@@ -302,29 +299,5 @@ class Qcm
     public function getNbPoints()
     {
         return $this->nbPoints;
-    }
-
-    /**
-     * Set duration
-     *
-     * @param \DateTime $duration
-     *
-     * @return Qcm
-     */
-    public function setDuration($duration)
-    {
-        $this->duration = $duration;
-
-        return $this;
-    }
-
-    /**
-     * Get duration
-     *
-     * @return \DateTime
-     */
-    public function getDuration()
-    {
-        return $this->duration;
     }
 }

@@ -1,0 +1,30 @@
+iia_category:
+    path:     /
+    defaults: { _controller: "iiaApiBundle:Category:index" }
+
+iia_category_show:
+    path:     /{id}/show
+    defaults: { _controller: "iiaApiBundle:Category:show" }
+
+iia_category_new:
+    path:     /new
+    defaults: { _controller: "iiaApiBundle:Category:new" }
+
+iia_category_create:
+    path:     /create
+    defaults: { _controller: "iiaApiBundle:Category:create" }
+    methods:  POST
+
+iia_category_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "iiaApiBundle:Category:edit" }
+
+iia_category_update:
+    path:     /{id}/update
+    defaults: { _controller: "iiaApiBundle:Category:update" }
+    methods:  [POST, PUT]
+
+iia_category_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "iiaApiBundle:Category:delete" }
+    methods:  [POST, DELETE]

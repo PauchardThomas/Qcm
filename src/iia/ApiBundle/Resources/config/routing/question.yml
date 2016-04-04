@@ -1,0 +1,30 @@
+question:
+    path:     /
+    defaults: { _controller: "iiaApiBundle:Question:index" }
+
+question_show:
+    path:     /{id}/show
+    defaults: { _controller: "iiaApiBundle:Question:show" }
+
+question_new:
+    path:     /new
+    defaults: { _controller: "iiaApiBundle:Question:new" }
+
+question_create:
+    path:     /create
+    defaults: { _controller: "iiaApiBundle:Question:create" }
+    methods:  POST
+
+question_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "iiaApiBundle:Question:edit" }
+
+question_update:
+    path:     /{id}/update
+    defaults: { _controller: "iiaApiBundle:Question:update" }
+    methods:  [POST, PUT]
+
+question_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "iiaApiBundle:Question:delete" }
+    methods:  [POST, DELETE]

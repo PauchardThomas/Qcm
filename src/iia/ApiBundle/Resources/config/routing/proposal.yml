@@ -1,0 +1,30 @@
+proposal:
+    path:     /
+    defaults: { _controller: "iiaApiBundle:Proposal:index" }
+
+proposal_show:
+    path:     /{id}/show
+    defaults: { _controller: "iiaApiBundle:Proposal:show" }
+
+proposal_new:
+    path:     /new
+    defaults: { _controller: "iiaApiBundle:Proposal:new" }
+
+proposal_create:
+    path:     /create
+    defaults: { _controller: "iiaApiBundle:Proposal:create" }
+    methods:  POST
+
+proposal_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "iiaApiBundle:Proposal:edit" }
+
+proposal_update:
+    path:     /{id}/update
+    defaults: { _controller: "iiaApiBundle:Proposal:update" }
+    methods:  [POST, PUT]
+
+proposal_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "iiaApiBundle:Proposal:delete" }
+    methods:  [POST, DELETE]

@@ -5,11 +5,9 @@ namespace iia\ApiBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\JoinColumn;
 use FOS\UserBundle\Entity\User AS BaseUser ;
-use JMS\Serializer\Annotation\Expose;
-use JMS\Serializer\Annotation\ExclusionPolicy;
 /**
  * User
- * @ExclusionPolicy("all")
+ *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="iia\ApiBundle\Entity\UserRepository")
  */
@@ -17,12 +15,14 @@ class User extends BaseUser
 {
     /**
      * @var integer
+     *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      * @ORM\OneToMany(targetEntity="User_qcm", mappedBy="userId")
      */
     protected $id;
+
     /**
      * @ORM\ManyToOne(targetEntity="GroupOfUsers",inversedBy="groupUser")
      * @ORM\JoinColumn(name="group_id",referencedColumnName="id")

@@ -1,0 +1,23 @@
+iia_api_proposal:
+    resource: "@iiaApiBundle/Resources/config/routing/proposal.yml"
+    prefix:   /proposal
+    requirements:
+        _format: xml|json|yaml
+
+iia_api_question:
+    resource: "@iiaApiBundle/Resources/config/routing/question.yml"
+    prefix:   /question
+    requirements:
+        _format: xml|json|yaml
+
+iia_api_iia_category:
+    resource: "@iiaApiBundle/Resources/config/routing/category.yml"
+    prefix:   /iia_category
+    requirements:
+        _format: xml|json|yaml
+
+iia_api_iia_qcm:
+    resource: "@iiaApiBundle/Resources/config/routing/qcm.yml"
+    prefix:   /iia_qcm
+    requirements:
+        _format: xml|json|yaml

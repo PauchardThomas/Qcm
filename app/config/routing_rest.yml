@@ -1,0 +1,7 @@
+Rest_Qcm : 
+  type : rest
+  resource: "@iiaApiBundle/Resources/config/routing_rest.yml"
+
+  Rest_Category : 
+  type : rest
+  resource: "@iiaApiBundle/Resources/config/routing_rest.yml"

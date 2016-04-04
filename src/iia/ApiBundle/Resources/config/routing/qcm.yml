@@ -1,0 +1,32 @@
+qcm:
+    path:     /
+    defaults: { _controller: "iiaApiBundle:Qcm:index" }
+    requirements:
+        _format: xml|json|yaml
+
+qcm_show:
+    path:     /{id}/show
+    defaults: { _controller: "iiaApiBundle:Qcm:show" }
+
+qcm_new:
+    path:     /new
+    defaults: { _controller: "iiaApiBundle:Qcm:new" }
+
+qcm_create:
+    path:     /create
+    defaults: { _controller: "iiaApiBundle:Qcm:create" }
+    methods:  POST
+
+qcm_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "iiaApiBundle:Qcm:edit" }
+
+qcm_update:
+    path:     /{id}/update
+    defaults: { _controller: "iiaApiBundle:Qcm:update" }
+    methods:  [POST, PUT]
+
+qcm_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "iiaApiBundle:Qcm:delete" }
+    methods:  [POST, DELETE]

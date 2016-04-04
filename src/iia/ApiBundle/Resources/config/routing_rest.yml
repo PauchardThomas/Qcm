@@ -1,0 +1,20 @@
+qcms : 
+  type: rest
+  resource:     "iiaApiBundle:RestQcm"
+  name_prefix:  api_
+questions : 
+  type: rest
+  resource:     "iiaApiBundle:RestQuestion"
+  name_prefix:  api_
+categories :
+  type: rest
+  resource:    "iiaApiBundle:RestCategory"
+  name_prefix:  api_
+listqcm:
+  type: rest
+  resource:   "iiaApiBundle:RestQcm"
+  name_prefix:  api_
+users:
+  type: rest
+  resource:   "iiaApiBundle:RestUser"
+  name_prefix:  api_

@@ -35,7 +35,7 @@ class Question
 
     /**
      * @var integer
-     * @Expose
+     *
      * @ORM\Column(name="points", type="integer")
      */
     private $points;
@@ -50,12 +50,11 @@ class Question
     /**
      * @var \iia\ApiBundle\Entity\Qcm @ORM\ManyToOne(targetEntity="Qcm",inversedBy="question_id")
      * @ORM\JoinColumn(name="qcm_id",referencedColumnName="id")
-     * @Expose
      */
     private $questionQcm;
     
     /**
-     * @Expose
+     * 
      * @var \iia\ApiBundle\Entity\Proposal
      * @orm\OneToMany(targetEntity="Proposal",mappedBy="propQuestion")
      */
