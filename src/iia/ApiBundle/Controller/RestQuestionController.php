@@ -28,8 +28,8 @@ class RestQuestionController extends Controller {
     $qcm_id = $json[0]->id_qcm;
     
     //User id :
-    //$user_id = $json[0]->id_user;
-    $user_id = 5;
+    $user_id = $json[0]->id_user;
+    //$user_id = 5;
     $qcm_points = null;
     //Qcm nb points
     $query = $em->createQuery ( 'SELECT q.nbPoints FROM iiaApiBundle:Qcm q WHERE q.id = :id' );
